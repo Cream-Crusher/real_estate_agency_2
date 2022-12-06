@@ -2,9 +2,16 @@ from django.db import models
 from django.utils import timezone
 
 
+BUILDING_STATE_SELECTION = [
+    (True, 'Новостройка'),
+    (False, 'Cтарое здание'),
+]
+
+
 class Flat(models.Model):
     owner = models.CharField('ФИО владельца', max_length=200)
     owners_phonenumber = models.CharField('Номер владельца', max_length=20)
+    new_building = models.BooleanField('Статус постройки здания', choices=BUILDING_STATE_SELECTION, null=False)
     description = models.TextField('Текст объявления', blank=True)
     price = models.IntegerField('Цена квартиры', db_index=True)
 
