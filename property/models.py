@@ -54,5 +54,13 @@ class Flat(models.Model):
         default=timezone.now,
         db_index=True)
 
+    liked_by = models.ManyToManyField("self", related_name="liked_posts", verbose_name='лайки')
+
     def __str__(self):
         return f'{self.town}, {self.address} ({self.price}р.)'
+
+
+class Review(models.Model):
+    address = models.ForeignKey(Flat, null=True, on_delete=models.CASCADE, related_name='сomplaints', verbose_name='Адрес')
+    who = models.CharField(max_length=200, verbose_name='Кто жаловался')
+    complaint = models.TextField(verbose_name='Текст жалобы')
