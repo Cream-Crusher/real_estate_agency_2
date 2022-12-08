@@ -66,3 +66,10 @@ class Review(models.Model):
     address = models.ForeignKey(Flat, null=True, on_delete=models.CASCADE, related_name='сomplaints', verbose_name='Адрес')
     who = models.CharField(max_length=200, verbose_name='Кто жаловался')
     complaint = models.TextField(verbose_name='Текст жалобы')
+
+
+class Owner(models.Model):
+    name = models.CharField('ФИО владельца', max_length=200)
+    owner_pure_phone = PhoneNumberField('Нормализованный номер владельца', blank=True, region="RU")
+    owners_phonenumber = models.CharField('Номер владельца', max_length=20)
+    apartment_owner = models.ManyToManyField(Flat, verbose_name='Квартира в собственности', related_name="persons_passport", blank=True)

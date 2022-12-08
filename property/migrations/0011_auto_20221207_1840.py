@@ -6,7 +6,7 @@ from django.db import migrations
 
 def normalization_number(apps, Flat):
     Flat = apps.get_model('property', 'Flat')
-    print(1)
+    print(2)
     for flat in Flat.objects.filter(owners_phonenumber='+70000000000'):
 
         owners_phonenumber = flat.owners_phonenumber
