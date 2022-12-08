@@ -11,7 +11,7 @@ BUILDING_STATE_SELECTION = [
 
 class Flat(models.Model):
     owner = models.CharField('ФИО владельца', max_length=200)
-    owner_pure_phone = PhoneNumberField('Нормализованный номер владельца', blank=True)
+    owner_pure_phone = PhoneNumberField('Нормализованный номер владельца', blank=True, region="RU")
     owners_phonenumber = models.CharField('Номер владельца', max_length=20)
     new_building = models.BooleanField('Статус постройки здания', choices=BUILDING_STATE_SELECTION, db_index=True, default=False, null=True)
     description = models.TextField('Текст объявления', blank=True)
