@@ -62,17 +62,17 @@ class Flat(models.Model):
         return f'{self.town}, {self.address} ({self.price}р.)'
 
 
-class Review(models.Model):
-    address = models.ForeignKey(Flat, null=True, on_delete=models.CASCADE, related_name='сomplaints', verbose_name='Адрес')
+class Complaint(models.Model):
+    address = models.ForeignKey(Flat, null=True, on_delete=models.CASCADE, related_name='complaints', verbose_name='Адрес')
     who = models.CharField(max_length=200, verbose_name='Кто жаловался')
     complaint = models.TextField(verbose_name='Текст жалобы')
 
 
 class Owner(models.Model):
-    name = models.CharField('ФИО владельца', max_length=200)
+    owner_name = models.CharField('ФИО владельца', max_length=200)
     owner_pure_phone = PhoneNumberField('Нормализованный номер владельца', blank=True, region="RU")
     owners_phonenumber = models.CharField('Номер владельца', max_length=20)
-    apartment_owner = models.ManyToManyField(Flat, verbose_name='Квартира в собственности', related_name="persons_passport", blank=True)
+    apartment_owner = models.ManyToManyField(Flat, verbose_name='Квартир(а\ы) в собственности', related_name="owners", blank=True)
 
     def __str__(self):
-        return self.name
+        return self.owner_name
