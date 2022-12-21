@@ -65,7 +65,7 @@ class Flat(models.Model):
 class Complaint(models.Model):
     address = models.ForeignKey(Flat, null=True, on_delete=models.CASCADE, related_name='complaints', verbose_name='Адрес')
     who = models.CharField(max_length=200, verbose_name='Кто жаловался')
-    complaint = models.TextField(verbose_name='Текст жалобы')
+    text = models.TextField(verbose_name='Текст жалобы')
 
 
 class Owner(models.Model):
