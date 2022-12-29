@@ -6,7 +6,7 @@ from django.db import migrations
 def change_building_status(apps, Flat):
     Flat = apps.get_model('property', 'Flat')
 
-    for flat in Flat.objects.all():
+    for flat in Flat.objects.filter(construction_year__year=2014):
 
         if 2014 < flat.construction_year:
             flat.new_building = True
