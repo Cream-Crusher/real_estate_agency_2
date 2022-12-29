@@ -20,12 +20,9 @@ def transfer(apps, Flat):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('property', '0006_auto_20221221_1909'),
+        ('property', '0005_auto_20221221_1907'),
     ]
 
     operations = [
         migrations.RunPython(transfer)
     ]
-
-
-

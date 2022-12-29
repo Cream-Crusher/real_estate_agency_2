@@ -65,7 +65,7 @@ class Owner(models.Model):#модель опльзователся
     apartment = models.ManyToManyField(Flat, verbose_name='Квартир(а\ы) в собственности', related_name="owners", blank=True)
 
     def __str__(self):
-        return self.owner_name
+        return self.name
 
 
 class UserComplaint(models.Model):
