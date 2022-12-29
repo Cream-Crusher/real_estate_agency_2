@@ -10,13 +10,11 @@ def transfer(apps, Flat):
 
     for falt in Flat.objects.all():
 
-        if not Owner.objects.filter(owner_name=falt.owner).exists():
-
-            Owner.objects.get_or_create(
-                owner_name=falt.owner,
-                owner_pure_phone=falt.owner_pure_phone,
-                owners_phonenumber=falt.owners_phonenumber,
-            )
+        Owner.objects.get_or_create(
+            owner_name=falt.owner,
+            owner_pure_phone=falt.owner_pure_phone,
+            owners_phonenumber=falt.owners_phonenumber,
+        )
 
 
 class Migration(migrations.Migration):

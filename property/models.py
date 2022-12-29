@@ -55,8 +55,6 @@ class Flat(models.Model):
         default=timezone.now,
         db_index=True)
 
-    liked_by = models.ManyToManyField("self", related_name="liked_posts", verbose_name='лайки', blank=True)
-
     def __str__(self):
         return f'{self.town}, {self.address} ({self.price}р.)'
 
@@ -70,7 +68,8 @@ class Owner(models.Model):#модель опльзователся
         return self.owner_name
 
 
-class User_Complaint(models.Model):
+class UserComplaint(models.Model):
     apartment = models.ForeignKey(Flat, null=True, on_delete=models.CASCADE, related_name='complaints', verbose_name='Адрес')
     username = models.ForeignKey(Owner, null=True, on_delete=models.CASCADE, related_name='users', verbose_name='Кто жаловался')
+    liked_by = models.ManyToManyField(Flat, related_name="liked_apartments", verbose_name='лайки', blank=True)
     text = models.TextField(verbose_name='Текст жалобы')

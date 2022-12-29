@@ -1,10 +1,10 @@
 from django.contrib import admin
 
-from .models import Flat, Complaint, Owner
+from .models import Flat, UserComplaint, Owner
 
 
 class OwnerInline(admin.TabularInline):
-    model = Owner.apartment_owner.through
+    model = Owner.apartment.through
     raw_id_fields = ['owner', ]
 
 
@@ -14,18 +14,17 @@ class FlatAdmin(admin.ModelAdmin):
     list_display = ['address', 'price', 'construction_year', 'town', 'new_building', ]
     list_editable = ['new_building', ]
     list_filter = ['new_building', 'has_balcony', 'rooms_number', ]
-    raw_id_fields = ['liked_by', ]
     inlines = [OwnerInline, ]
 
 
-class ComplaintAdmin(admin.ModelAdmin):
-    raw_id_fields = ['address', ]
+class UserComplaintAdmin(admin.ModelAdmin):
+    raw_id_fields = ['apartment', 'liked_by', ]
 
 
 class OwnerAdmin(admin.ModelAdmin):
-    raw_id_fields = ['apartment_owner', ]
+    raw_id_fields = ['apartment', ]
 
 
 admin.site.register(Flat, FlatAdmin)
-admin.site.register(Complaint, ComplaintAdmin)
+admin.site.register(UserComplaint, UserComplaintAdmin)
 admin.site.register(Owner, OwnerAdmin)
