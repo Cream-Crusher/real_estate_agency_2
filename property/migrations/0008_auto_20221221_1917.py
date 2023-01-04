@@ -6,22 +6,22 @@ from django.db import migrations
 def move_backwards(apps, schema_editor):
     Owner = apps.get_model('property', 'Owner')
 
-    for owner in Owner.objects.all():
-        owner.apartment_owner.clear()
+    for owner in Owner.objects.all().iterator():
+        owner.apartment.clear()
 
 
 def fill_owners(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
     Owner = apps.get_model('property', 'Owner')
 
-    for owner in Owner.objects.all():
-        owner.apartment_owner.set(Flat.objects.filter(owner=owner.owner_name))
+    for owner in Owner.objects.all().iterator():
+        owner.apartment.set(Flat.objects.filter(owner=owner.name))
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('property', '0007_auto_20221221_1910'),
+        ('property', '0010_auto_20230104_1737'),
     ]
 
     operations = [
