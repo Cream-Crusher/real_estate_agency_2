@@ -3,7 +3,7 @@
 from django.db import migrations
 
 
-def move_backwards(apps, schema_editor):
+def move_backwards(apps, Owner):
     Owner = apps.get_model('property', 'Owner')
 
     for owner in Owner.objects.all().iterator():
@@ -21,7 +21,7 @@ def fill_owners(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('property', '0010_auto_20230104_1737'),
+        ('property', '0006_auto_20230105_0852'),
     ]
 
     operations = [

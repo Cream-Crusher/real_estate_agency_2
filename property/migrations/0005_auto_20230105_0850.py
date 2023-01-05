@@ -7,10 +7,10 @@ from django.db import migrations
 def normalization_number(apps, Flat):
     Flat = apps.get_model('property', 'Flat')
 
-    for flat in Flat.objects.all():
+    for flat in Flat.objects.all().iterator():
 
-        owners_phonenumber = flat.owners_phonenumber
-        phone_number = phonenumbers.parse(owners_phonenumber, 'RU')
+        phonenumber = flat.phonenumber
+        phone_number = phonenumbers.parse(phonenumber, 'RU')
 
         if phonenumbers.is_possible_number(phone_number):
             flat.owner_pure_phone = phone_number
@@ -22,7 +22,6 @@ def normalization_number(apps, Flat):
             flat.owner_pure_phone = phonenumbers.format_number(phone_number, phonenumbers.PhoneNumberFormat.E164)
 
         flat.save()
-
 
 class Migration(migrations.Migration):
 

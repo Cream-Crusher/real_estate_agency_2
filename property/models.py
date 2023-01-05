@@ -3,16 +3,16 @@ from django.utils import timezone
 from phonenumber_field.modelfields import PhoneNumberField
 
 
-BUILDING_STATE_SELECTION = [
-    (True, 'Новостройка'),
-    (False, 'Cтарое здание'),
-]
-
-
 class Flat(models.Model):
+    BUILDING_TYPES = (
+        ('NEW_BUILDING', 'Новостройка'),
+        ('OLD_BUILDING', 'Cтарое здание'),
+        ('UNKNOWN', 'Неизвестно'),
+    )
+
     owner = models.CharField('ФИО владельца', max_length=200)
     phonenumber = models.CharField('Номер владельца', max_length=20)
-    new_building = models.BooleanField('Статус постройки здания', choices=BUILDING_STATE_SELECTION, db_index=True, default=False, null=True)
+    new_building = models.BooleanField('Статус постройки здания', choices=BUILDING_TYPES, db_index=True, default='UNKNOWN', null=True)
     description = models.TextField('Текст объявления', blank=True)
     price = models.IntegerField('Цена квартиры', db_index=True)
 

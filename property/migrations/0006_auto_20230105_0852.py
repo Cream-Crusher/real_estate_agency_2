@@ -8,19 +8,18 @@ def transfer(apps, Flat):
 
     Flat = apps.get_model('property', 'Flat')
 
-    for falt in Flat.objects.all():
+    for falt in Flat.objects.all().iterator():
 
         Owner.objects.get_or_create(
-            owner_name=falt.owner,
-            owner_pure_phone=falt.owner_pure_phone,
-            owners_phonenumber=falt.owners_phonenumber,
+            name=falt.owner,
+            phone=falt.owner_pure_phone,
         )
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('property', '0005_auto_20221221_1907'),
+        ('property', '0005_auto_20230105_0850'),
     ]
 
     operations = [

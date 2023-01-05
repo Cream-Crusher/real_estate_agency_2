@@ -11,7 +11,7 @@ def change_building_status(apps, Flat):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('property', '0003_auto_20221221_1905'),
+        ('property', '0003_auto_20230105_0842'),
     ]
 
     operations = [
