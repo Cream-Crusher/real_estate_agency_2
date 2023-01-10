@@ -59,7 +59,7 @@ class Flat(models.Model):
         return f'{self.town}, {self.address} ({self.price}р.)'
 
 
-class Owner(models.Model):#модель опльзователся
+class Owner(models.Model):
     name = models.CharField('ФИО владельца', max_length=200)
     phone = PhoneNumberField('Нормализованный номер владельца', blank=True, region="RU")
     apartment = models.ManyToManyField(Flat, verbose_name='Квартир(а\ы) в собственности', related_name="owners", blank=True)
