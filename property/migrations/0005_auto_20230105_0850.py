@@ -15,7 +15,7 @@ def normalization_number(apps, Flat):
         if phonenumbers.is_possible_number(phone_number):
             flat.owner_pure_phone = phone_number
 
-        elif phonenumbers.is_valid_number(phone_number) == False:
+        elif not phonenumbers.is_valid_number(phone_number):
             flat.owner_pure_phone = phonenumbers.format_number(phone_number, phonenumbers.PhoneNumberFormat.E164)
 
         flat.save()
