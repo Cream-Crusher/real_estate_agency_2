@@ -16,11 +16,12 @@ class FlatAdmin(admin.ModelAdmin):
     list_editable = ['new_building', ]
     list_filter = ['new_building', 'has_balcony', 'rooms_number', ]
     inlines = [OwnerInline, ]
+    raw_id_fields = ['liked_by', ]
 
 
 @admin.register(UserComplaint)
 class UserComplaintAdmin(admin.ModelAdmin):
-    raw_id_fields = ['apartment', 'liked_by', ]
+    raw_id_fields = ['apartment', ]
 
 
 @admin.register(Owner)

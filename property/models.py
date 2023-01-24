@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from phonenumber_field.modelfields import PhoneNumberField
-
+from django.contrib.auth.models import User
 
 class Flat(models.Model):
     BUILDING_TYPES = (
@@ -55,7 +55,7 @@ class Flat(models.Model):
         default=timezone.now,
         db_index=True)
 
-    liked_by = models.ManyToManyField('self', related_name="liked_apartments", verbose_name='лайки', blank=True)
+    liked_by = models.ManyToManyField(User, related_name="liked_apartments", verbose_name='лайки', blank=True)
 
     def __str__(self):
         return f'{self.town}, {self.address} ({self.price}р.)'
