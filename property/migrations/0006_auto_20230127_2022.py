@@ -21,7 +21,7 @@ def fill_owners(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('property', '0006_auto_20230127_1641'),
+        ('property', '0005_auto_20230127_2014'),
     ]
 
     operations = [

@@ -12,13 +12,15 @@ def transfer(apps, Flat):
 
         Owner.objects.get_or_create(
             name=flat.owner,
+            phonenumber=flat.phonenumber,
+            pure_phone=flat.pure_phone,
         )
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('property', '0005_auto_20230127_1639'),
+        ('property', '0004_auto_20230127_2011'),
     ]
 
     operations = [

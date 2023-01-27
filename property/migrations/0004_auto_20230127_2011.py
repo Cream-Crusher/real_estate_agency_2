@@ -23,7 +23,7 @@ def normalization_number(apps, Flat):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('property', '0004_auto_20230127_1638'),
+        ('property', '0003_auto_20230127_2010'),
     ]
 
     operations = [
