@@ -13,19 +13,20 @@ def normalization_number(apps, Flat):
         phone_number = phonenumbers.parse(phonenumber, 'RU')
 
         if phonenumbers.is_possible_number(phone_number):
-            flat.owner_pure_phone = phone_number
+            flat.pure_phone = phone_number
 
         elif not phonenumbers.is_valid_number(phone_number):
-            flat.owner_pure_phone = phonenumbers.format_number(phone_number, phonenumbers.PhoneNumberFormat.E164)
+            flat.pure_phone = phonenumbers.format_number(phone_number, phonenumbers.PhoneNumberFormat.E164)
 
         flat.save()
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('property', '0004_auto_20221221_1905'),
+        ('property', '0004_auto_20230127_1638'),
     ]
 
     operations = [
         migrations.RunPython(normalization_number)
     ]
+

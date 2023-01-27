@@ -21,7 +21,7 @@ class FlatAdmin(admin.ModelAdmin):
 
 @admin.register(UserComplaint)
 class UserComplaintAdmin(admin.ModelAdmin):
-    raw_id_fields = ['apartment', ]
+    raw_id_fields = ['flat', ]
 
 
 @admin.register(Owner)
