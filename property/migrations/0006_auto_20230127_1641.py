@@ -8,10 +8,10 @@ def transfer(apps, Flat):
 
     Flat = apps.get_model('property', 'Flat')
 
-    for falt in Flat.objects.all().iterator():
+    for flat in Flat.objects.all().iterator():
 
         Owner.objects.get_or_create(
-            name=falt.owner,
+            name=flat.owner,
         )
 
 
