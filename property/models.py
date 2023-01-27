@@ -65,7 +65,7 @@ class Flat(models.Model):
 class Owner(models.Model):
     name = models.CharField('ФИО владельца', max_length=200)
     apartment = models.ManyToManyField(Flat, verbose_name='Квартир(а\ы) в собственности', related_name="owners", blank=True)
-    
+
     def __str__(self):
         return self.name
 
