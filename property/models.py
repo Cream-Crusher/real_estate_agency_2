@@ -3,6 +3,7 @@ from django.utils import timezone
 from phonenumber_field.modelfields import PhoneNumberField
 from django.contrib.auth.models import User
 
+
 class Flat(models.Model):
     BUILDING_TYPES = (
         ('NEW_BUILDING', 'Новостройка'),
