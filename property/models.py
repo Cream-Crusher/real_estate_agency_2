@@ -6,9 +6,8 @@ from django.contrib.auth.models import User
 
 class Flat(models.Model):
     BUILDING_TYPES = (
-        ('NEW_BUILDING', 'Новостройка'),
-        ('OLD_BUILDING', 'Cтарое здание'),
-        ('UNKNOWN', 'Неизвестно'),
+        (True, 'Новостройка'),
+        (False, 'Cтарое здание'),
     )
 
     new_building = models.BooleanField('Статус постройки здания', choices=BUILDING_TYPES, db_index=True, default='UNKNOWN', null=True)
