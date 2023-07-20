@@ -3,3 +3,4 @@ django-phonenumber-field==7.0.1
 phonenumberslite==8.13.3
 Django==3.2
 environs==5.2.1
+psycopg2-binary==2.9.6

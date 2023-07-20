@@ -8,3 +8,6 @@ __pycache__/
 *cfg
 fix.py
 *__init__
+*test_db
+filling_db.py
+config.py
